@@ -5,7 +5,9 @@ modules:
       resolver:
         function: resolver
       title: issue-context-test
-      label: Custom UI
+      label: Custom UI Test
+      dynamicProperties:
+        function: issue-context-status
       status:
         type: 'badge'
         value:
@@ -13,6 +15,11 @@ modules:
   function:
     - key: resolver
       handler: index.handler
+    - key: issue-context-status
+      handler: index.issueContextStatus
+permissions:
+  scopes:
+    - read:jira-work
 resources:
   - key: main
     path: static/hello-world/build
@@ -21,4 +28,4 @@ app:
     name: nodejs22.x
     memoryMB: 256
     architecture: arm64
-  id: ari:cloud:ecosystem::app/eaaf7184-c14f-4e47-a94a-f080a664c298
+  id: ari:cloud:ecosystem::app/e0eda06e-3e45-40fa-b9a2-99b59040bf01
