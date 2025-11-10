@@ -1,5 +1,5 @@
 import Resolver from '@forge/resolver';
-import {requestJira, route} from "@forge/api";
+import api, {route} from "@forge/api";
 
 const resolver = new Resolver();
 
@@ -15,8 +15,8 @@ export const issueContextStatus = async (payload) => {
   console.log('Got payload', payload)
   const issueId = payload.extension.issue.id
   console.log('Extracted issueId', issueId)
-  const response = await requestJira(
-      route`/rest/api/3/issue/${issueId}/properties/test`
+  const response = await api.asApp().requestJira(
+      route`/rest/api/3/issue/${issueId}/properties/test`,
   )
   console.log('Got API response', response)
   const responsePayload = await response.json()
